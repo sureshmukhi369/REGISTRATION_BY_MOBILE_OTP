@@ -1,13 +1,11 @@
 package com.example.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 
 import java.time.LocalDateTime;
 
@@ -15,6 +13,8 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "users")
 @Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -25,6 +25,8 @@ public class UserEntity {
     private Long id;
 
     @Column(name = "mobile_number", nullable = false, unique = true, length = 15)
+    @Pattern(regexp = "^[6-9]\\d{9}$", message = "Invalid mobile number")
+
     private String mobileNumber;
 
     @Column(name = "is_verified", nullable = false)
@@ -40,5 +42,8 @@ public class UserEntity {
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private OtpEntity otp;
 
 }
