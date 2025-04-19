@@ -9,11 +9,15 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MobileRequestDto {
+public class OtpVerifyDto {
 
     @NotBlank(message = "Mobile number is required")
     @Pattern(regexp = "^[6-9]\\d{9}$", message = "Invalid mobile number")
     private String mobile;
+
+    @NotBlank(message = "OTP is required")
+    @Pattern(regexp = "^\\d{6}$", message = "Invalid OTP format")
+    private String otp;
 
 
 }

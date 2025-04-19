@@ -26,7 +26,6 @@ public class UserEntity {
 
     @Column(name = "mobile_number", nullable = false, unique = true, length = 15)
     @Pattern(regexp = "^[6-9]\\d{9}$", message = "Invalid mobile number")
-
     private String mobileNumber;
 
     @Column(name = "is_verified", nullable = false)
