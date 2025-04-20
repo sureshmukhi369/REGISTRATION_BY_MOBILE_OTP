@@ -3,6 +3,7 @@ package com.example.service.impl;
 import com.example.entity.OtpEntity;
 import com.example.repository.OtpRepository;
 import com.example.service.OtpService;
+import com.example.util.OtpGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
